@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>CleanPro | Professional House Maid Booking - India</title>
+    <!-- Google Fonts + Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fff8e7 0%, #fff3e0 100%);
+            color: #2c2c2c;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* Indian inspired color palette: saffron, white, green, deep maroon */
+        :root {
+            --saffron: #FF9933;
+            --saffron-dark: #e67e22;
+            --white: #FFFFFF;
+            --green: #138808;
+            --green-dark: #0a5c0a;
+            --maroon: #800020;
+            --sand: #f9e5c2;
+            --border-light: #ffe0b5;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header with Tricolor inspiration */
+        .header {
+            background: var(--white);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid var(--saffron);
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span:first-child {
+            color: var(--saffron);
+        }
+
+        .logo span:last-child {
+            color: var(--green);
+        }
+
+        .logo i {
+            color: var(--maroon);
+            font-size: 1.6rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #4a3b2c;
+            transition: 0.2s;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: var(--saffron-dark);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--saffron);
+            padding: 8px 20px;
+            border-radius: 40px;
+            color: var(--saffron-dark);
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .btn-outline:hover {
+            background: var(--saffron);
+            color: white;
+        }
+
+        /* Booking Card - Full Width with Two Column Form */
+        .booking-main-wrapper {
+            margin: 40px 0 30px;
+        }
+
+        .booking-card {
+            background: rgba(255, 255, 245, 0.98);
+            border-radius: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(128, 0, 32, 0.2);
+            padding: 40px 36px;
+            border: 1px solid var(--border-light);
+        }
+
+        .booking-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .booking-header h2 {
+            font-weight: 800;
+            color: #b95f2a;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .festival-note {
+            background: #fff0dd;
+            border-radius: 28px;
+            padding: 10px 24px;
+            margin-top: 12px;
+            display: inline-block;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* TWO COLUMN FORM GRID */
+        .form-grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px 32px;
+            margin-bottom: 28px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .input-group label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #5a3e2b;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .input-group label i {
+            color: var(--saffron);
+            width: 24px;
+        }
+
+        input, select, textarea {
+            padding: 12px 16px;
+            border: 1.5px solid #f0dbc0;
+            border-radius: 20px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            transition: 0.2s;
+            background: #fffef7;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--saffron);
+            box-shadow: 0 0 0 3px rgba(255,153,51,0.2);
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        .service-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 6px;
+        }
+
+        .service-chip {
+            background: #fff3e4;
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid #ffd9a5;
+            color: #7a4c2c;
+        }
+
+        .service-chip.selected {
+            background: var(--green);
+            color: white;
+            border-color: var(--green-dark);
+            box-shadow: 0 4px 12px rgba(19,136,8,0.3);
+        }
+
+        .price-preview {
+            background: linear-gradient(95deg, #fff0e0, #fff7e8);
+            border-radius: 28px;
+            padding: 16px 28px;
+            margin: 20px 0 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            border-left: 6px solid var(--saffron);
+        }
+
+        .total-price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--maroon);
+        }
+
+        .btn-book {
+            background: var(--green);
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 6px 14px rgba(19,136,8,0.4);
+            width: 100%;
+            justify-content: center;
+        }
+
+        .btn-book:hover {
+            background: var(--green-dark);
+            transform: translateY(-2px);
+        }
+
+        /* SERVICES SECTION - with images and descriptions */
+        .services-showcase {
+            margin: 40px 0 30px;
+            background: linear-gradient(115deg, #fffcf5, #fff7ed);
+            border-radius: 2rem;
+            padding: 40px 32px;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.05);
+            border: 1px solid #ffefdb;
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .services-header h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #b95f2a, var(--saffron), var(--green));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        .services-header p {
+            color: #6b4c33;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            border: 1px solid #ffe5c2;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px -12px rgba(128, 0, 32, 0.2);
+        }
+
+        .service-img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+            background: #ffe2c1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--maroon);
+        }
+
+        .service-card-content {
+            padding: 22px 20px 26px;
+        }
+
+        .service-card-content h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #5a3b28;
+        }
+
+        .service-price-tag {
+            display: inline-block;
+            background: #f3e5d5;
+            padding: 5px 14px;
+            border-radius: 50px;
+            font-weight: 700;
+            color: var(--maroon);
+            margin: 12px 0 12px;
+            font-size: 0.9rem;
+        }
+
+        .service-description {
+            color: #4f3a28;
+            line-height: 1.5;
+            margin: 12px 0;
+            font-size: 0.95rem;
+        }
+
+        .service-features-list {
+            list-style: none;
+            margin-top: 14px;
+        }
+
+        .service-features-list li {
+            font-size: 0.85rem;
+            padding: 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #5b4734;
+        }
+
+        .service-features-list li i {
+            color: var(--green);
+            width: 20px;
+            font-size: 0.8rem;
+        }
+
+        .book-service-btn {
+            margin-top: 20px;
+            background: transparent;
+            border: 1.5px solid var(--saffron);
+            padding: 10px 18px;
+            border-radius: 40px;
+            font-weight: 600;
+            color: var(--saffron-dark);
+            cursor: pointer;
+            transition: 0.2s;
+            width: 100%;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .book-service-btn:hover {
+            background: var(--saffron);
+            color: white;
+            border-color: var(--saffron);
+        }
+
+        /* Bookings Table Section */
+        .bookings-list-section {
+            background: rgba(255, 252, 245, 0.96);
+            border-radius: 2rem;
+            padding: 28px;
+            margin: 30px 0 60px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            border: 1px solid #ffe1b9;
+            overflow-x: auto;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-left: 6px solid var(--saffron);
+            padding-left: 20px;
+            color: #5a3b28;
+        }
+
+        /* Table Styles */
+        .bookings-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            min-width: 800px;
+        }
+
+        .bookings-table th {
+            background: linear-gradient(135deg, #fff0e0, #ffe8d4);
+            color: #5a3b28;
+            padding: 14px 16px;
+            text-align: left;
+            font-weight: 700;
+            border-bottom: 2px solid var(--saffron);
+            font-size: 0.9rem;
+        }
+
+        .bookings-table td {
+            padding: 14px 16px;
+            border-bottom: 1px solid #ffe1b9;
+            vertical-align: middle;
+            color: #4a3828;
+        }
+
+        .bookings-table tr:hover {
+            background: #fffaf0;
+        }
+
+        .cancel-table-btn {
+            background: white;
+            border: 1px solid #ffc6a0;
+            padding: 6px 16px;
+            border-radius: 40px;
+            color: #b33b2c;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .cancel-table-btn:hover {
+            background: #fff0e6;
+            border-color: #ff9666;
+            color: #9e2a1f;
+        }
+
+        .empty-message {
+            text-align: center;
+            padding: 50px;
+            color: #b87a4b;
+            font-style: italic;
+            background: #fffbf0;
+            border-radius: 1.5rem;
+        }
+
+        .booking-badge {
+            background: #f7ebd4;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #2c241a;
+            color: #ffefcf;
+            margin-top: 20px;
+            border-top: 4px solid var(--saffron);
+        }
+
+        .toast-message {
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background: #2e5c2e;
+			color: #fff3e0;
+			padding: 18px 32px;
+			border-radius: 60px;
+			font-weight: 600;
+			font-size: 1rem;
+			z-index: 200;
+			box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+			border-left: 6px solid var(--saffron);
+			border-right: 6px solid var(--green);
+			font-family: 'Poppins', sans-serif;
+			text-align: center;
+			white-space: nowrap;
+			backdrop-filter: blur(4px);
+			letter-spacing: 0.3px;
+		}
+
+		@media (max-width: 600px) {
+			.toast-message {
+				white-space: normal;
+				max-width: 85%;
+				text-align: center;
+				font-size: 0.85rem;
+				padding: 14px 22px;
+			}
+		}
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(40px);}
+            to { opacity: 1; transform: translateX(0);}
+        }
+
+        @media (max-width: 850px) {
+            .form-grid-2col {
+                grid-template-columns: 1fr;
+            }
+            .full-width {
+                grid-column: span 1;
+            }
+            .booking-card {
+                padding: 28px 20px;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .booking-header h2 {
+                font-size: 1.5rem;
+            }
+            .price-preview {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+            }
+            .bookings-table th, .bookings-table td {
+                padding: 10px 12px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="nav-bar">
+            <div class="logo">
+                <i class="fas fa-hand-sparkles"></i>
+                <span>Clean</span><span>Pro</span>
+            </div>
+            <div class="nav-links">
+                <a href="#" id="navHome">Home</a>
+                <a href="#" id="navServices">Services</a>
+                <a href="#" id="scrollToBookingsLink">My Bookings</a>
+                <a href="#" class="btn-outline"><i class="fas fa-phone-alt"></i> Contact Us</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        <!-- SERVICES SECTION WITH IMAGES & DESCRIPTIONS -->
+        <div class="services-showcase" id="servicesSection">
+            <div class="services-header">
+                <h2><i class="fas fa-concierge-bell"></i> Our Premium Services</h2>
+                <p>Professional home cleaning packages designed for every Indian household</p>
+            </div>
+            <div class="services-grid">
+                <!-- Service Card 1: Standard Clean -->
+                <div class="service-card">
+                    <div class="service-img" style="background: #FEF3E2;">
+                        <i class="fas fa-broom" style="font-size: 4rem; color: #e67e22;"></i>
+                    </div>
+                    <div class="service-card-content">
+                        <h3>✨ Standard Clean</h3>
+                        <div class="service-price-tag">Starting at ₹499</div>
+                        <p class="service-description">Everyday freshness for your home. Ideal for regular maintenance and quick cleaning sessions.</p>
+                        <ul class="service-features-list">
+                            <li><i class="fas fa-check-circle"></i> Dusting & mopping all rooms</li>
+                            <li><i class="fas fa-check-circle"></i> Kitchen counter & sink wipe</li>
+                            <li><i class="fas fa-check-circle"></i> Bathroom scrub & sanitize</li>
+                            <li><i class="fas fa-check-circle"></i> Trash removal</li>
+                        </ul>
+                        <button class="book-service-btn" data-service-type="standard" data-price="499">Book Standard Clean →</button>
+                    </div>
+                </div>
+
+                <!-- Service Card 2: Deep Clean -->
+                <div class="service-card">
+                    <div class="service-img" style="background: #EAF7E6;">
+                        <i class="fas fa-spray-can-sparkles" style="font-size: 4rem; color: #138808;"></i>
+                    </div>
+                    <div class="service-card-content">
+                        <h3>💎 Deep Clean</h3>
+                        <div class="service-price-tag">Starting at ₹999</div>
+                        <p class="service-description">Intensive deep-cleaning for homes, removing dust, germs and hidden dirt.</p>
+                        <ul class="service-features-list">
+                            <li><i class="fas fa-check-circle"></i> All standard cleaning +</li>
+                            <li><i class="fas fa-check-circle"></i> Inside cupboard / wardrobe wipe</li>
+                            <li><i class="fas fa-check-circle"></i> Fan & light fixture dusting</li>
+                            <li><i class="fas fa-check-circle"></i> Disinfection of high-touch areas</li>
+                        </ul>
+                        <button class="book-service-btn" data-service-type="deep" data-price="999">Book Deep Clean →</button>
+                    </div>
+                </div>
+
+                <!-- Service Card 3: Sofa + Full Home -->
+                <div class="service-card">
+                    <div class="service-img" style="background: #FCE9F0;">
+                        <i class="fas fa-couch" style="font-size: 4rem; color: #800020;"></i>
+                    </div>
+                    <div class="service-card-content">
+                        <h3>🏠 Sofa + Full Home</h3>
+                        <div class="service-price-tag">Starting at ₹1499</div>
+                        <p class="service-description">Complete home revival with professional sofa cleaning & upholstery care.</p>
+                        <ul class="service-features-list">
+                            <li><i class="fas fa-check-circle"></i> Full home deep cleaning</li>
+                            <li><i class="fas fa-check-circle"></i> Sofa vacuum & stain treatment</li>
+                            <li><i class="fas fa-check-circle"></i> Carpet spot cleaning</li>
+                            <li><i class="fas fa-check-circle"></i> Premium eco-friendly products</li>
+                        </ul>
+                        <button class="book-service-btn" data-service-type="move" data-price="1499">Book Sofa+Home →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MAIN BOOKING SECTION - TWO COLUMN FORM -->
+        <div class="booking-main-wrapper" id="homeSection">
+            <div class="booking-card">
+                <div class="booking-header">
+                    <h2><i class="fas fa-calendar-alt" style="color:#FF9933;"></i> Book Your Maid Instantly</h2>
+                    <div class="festival-note"><i class="fas fa-gift"></i> Festival Offer: Get ₹200 off on first booking!</div>
+                </div>
+
+                <!-- TWO COLUMN FORM FIELDS -->
+                <div class="form-grid-2col">
+                    <div class="input-group">
+                        <label><i class="fas fa-user-circle"></i> Full Name *</label>
+                        <input type="text" id="customerName" placeholder="e.g., Priya Sharma" autocomplete="name">
+                    </div>
+                    <div class="input-group">
+                        <label><i class="fas fa-envelope"></i> Email Address *</label>
+                        <input type="email" id="customerEmail" placeholder="hello@example.com">
+                    </div>
+                    <div class="input-group">
+                        <label><i class="fas fa-phone-alt"></i> Phone Number</label>
+                        <input type="tel" id="phoneNumber" placeholder="+91 98765 43210">
+                    </div>
+                    <div class="input-group">
+                        <label><i class="fas fa-home"></i> Complete Address *</label>
+                        <input type="text" id="address" placeholder="Street, landmark, city, pincode">
+                    </div>
+                    <div class="input-group">
+                        <label><i class="fas fa-calendar-week"></i> Preferred Date *</label>
+                        <input type="date" id="bookingDate">
+                    </div>
+                    <div class="input-group">
+                        <label><i class="fas fa-clock"></i> Time Slot</label>
+                        <select id="timeSlot">
+                            <option value="Morning 9 AM - 12 PM">🌞 Morning (9:00 AM - 12:00 PM)</option>
+                            <option value="Afternoon 1 PM - 4 PM">🌤️ Afternoon (1:00 PM - 4:00 PM)</option>
+                            <option value="Evening 5 PM - 8 PM">🌙 Evening (5:00 PM - 8:00 PM)</option>
+                        </select>
+                    </div>
+                    <div class="input-group full-width">
+                        <label><i class="fas fa-broom"></i> Cleaning Package</label>
+                        <div class="service-options" id="serviceOptions">
+                            <div data-service="standard" data-price="499" class="service-chip selected">✨ Standard Clean · ₹499</div>
+                            <div data-service="deep" data-price="999" class="service-chip">💎 Deep Clean · ₹999</div>
+                            <div data-service="move" data-price="1499" class="service-chip">🏠 Sofa + Full Home · ₹1499</div>
+                        </div>
+                    </div>
+                    <div class="input-group full-width">
+                        <label><i class="fas fa-pen-fancy"></i> Special Instructions</label>
+                        <textarea id="notes" rows="2" placeholder="e.g., Focus on kitchen, I have pets, etc."></textarea>
+                    </div>
+                </div>
+
+                <div class="price-preview">
+                    <span><i class="fas fa-rupee-sign"></i> Total Amount (tax inclusive)</span>
+                    <span class="total-price" id="totalPriceDisplay">₹499</span>
+                </div>
+                <button class="btn-book" id="bookNowBtn"><i class="fas fa-check-double"></i> Confirm Booking</button>
+            </div>
+        </div>
+
+        <!-- Active Bookings Section - TABLE VIEW WITH HEADERS -->
+        <div class="bookings-list-section" id="bookingsSection">
+            <div class="section-title">
+                <i class="fas fa-clipboard-list"></i> Your Active Bookings
+            </div>
+            <div id="bookingsContainer" class="booking-cards">
+                <!-- Table will be injected dynamically -->
+                <div class="empty-message"><i class="fas fa-calendar-alt"></i> No bookings yet. Fill the form above to book your maid!</div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p><i class="fas fa-hands-helping"></i> CleanPro — Customer satisfaction is our priority | 24x7 Support 📞 1800-202-4545</p>
+    <p style="margin-top: 8px; font-size:0.8rem;">📍 Service Areas: All major Indian cities | 🇮🇳 Made with ❤️ in India</p>
+</footer>
+
+<script>
+    // ---------- House Maid Booking System with Table View ----------
+    let bookings = [];   
+
+    function loadBookings() {
+        const stored = localStorage.getItem('swachh_seva_bookings');
+        if (stored) {
+            try {
+                bookings = JSON.parse(stored);
+            } catch(e) { bookings = []; }
+        } else {
+            bookings = [];
+        }
+        renderBookingsAsTable();
+    }
+
+    function saveBookings() {
+        localStorage.setItem('swachh_seva_bookings', JSON.stringify(bookings));
+    }
+
+    let currentService = { type: 'standard', price: 499 };
+
+    function initServiceChips() {
+        const chips = document.querySelectorAll('.service-chip');
+        chips.forEach(chip => {
+            chip.addEventListener('click', function() {
+                chips.forEach(c => c.classList.remove('selected'));
+                this.classList.add('selected');
+                const serviceType = this.getAttribute('data-service');
+                const price = parseInt(this.getAttribute('data-price'));
+                currentService = { type: serviceType, price: price };
+                updatePriceDisplay();
+            });
+        });
+    }
+
+    function updatePriceDisplay() {
+        const totalSpan = document.getElementById('totalPriceDisplay');
+        if (totalSpan) totalSpan.innerText = `₹${currentService.price}`;
+    }
+
+    function generateId() {
+        return 'SWSH-' + Date.now() + '-' + Math.random().toString(36).substr(2, 8).toUpperCase();
+    }
+
+    function validateForm() {
+        const name = document.getElementById('customerName').value.trim();
+        const email = document.getElementById('customerEmail').value.trim();
+        const phone = document.getElementById('phoneNumber').value.trim();
+        const address = document.getElementById('address').value.trim();
+        const date = document.getElementById('bookingDate').value;
+        if (!name) { showToast("Please enter your full name", true); return false; }
+        if (!email) { showToast("Email address is required", true); return false; }
+        const emailPattern = /^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/;
+        if (!emailPattern.test(email)) { showToast("Valid email required (e.g., name@domain.com)", true); return false; }
+        if (phone && phone.length < 8) { showToast("Valid phone number required (min 8 digits)", true); return false; }
+        if (!address) { showToast("Address is required for cleaning service", true); return false; }
+        if (!date) { showToast("Please select a preferred date", true); return false; }
+        const today = new Date().toISOString().split('T')[0];
+        if (date < today) { showToast("Please choose today or a future date", true); return false; }
+        return true;
+    }
+
+    function createBookingObject() {
+        const name = document.getElementById('customerName').value.trim();
+        const email = document.getElementById('customerEmail').value.trim();
+        const phone = document.getElementById('phoneNumber').value.trim();
+        const address = document.getElementById('address').value.trim();
+        const date = document.getElementById('bookingDate').value;
+        const timeSlot = document.getElementById('timeSlot').value;
+        const notes = document.getElementById('notes').value.trim();
+        let serviceLabel = '';
+        if (currentService.type === 'standard') serviceLabel = 'Standard Clean';
+        else if (currentService.type === 'deep') serviceLabel = 'Deep Clean';
+        else serviceLabel = 'Sofa + Full Home';
+        return {
+            id: generateId(), name, email, phone, address, date, timeSlot,
+            serviceType: currentService.type, serviceLabel, servicePrice: currentService.price, notes,
+            createdAt: new Date().toISOString()
+        };
+    }
+
+    function addBooking(booking) {
+        bookings.unshift(booking);
+        saveBookings();
+        renderBookingsAsTable();
+        clearFormFields();
+        showToast(`✅ Booking confirmed! ${booking.name}, your maid will arrive on ${booking.date} (${booking.timeSlot}). Thank you!`, false);
+    }
+
+    function clearFormFields() {
+        document.getElementById('customerName').value = '';
+        document.getElementById('customerEmail').value = '';
+        document.getElementById('phoneNumber').value = '';
+        document.getElementById('address').value = '';
+        document.getElementById('bookingDate').value = '';
+        document.getElementById('notes').value = '';
+        document.getElementById('timeSlot').value = 'Morning 9 AM - 12 PM';
+        const standardChip = document.querySelector('.service-chip[data-service="standard"]');
+        if (standardChip) {
+            document.querySelectorAll('.service-chip').forEach(c => c.classList.remove('selected'));
+            standardChip.classList.add('selected');
+            currentService = { type: 'standard', price: 499 };
+            updatePriceDisplay();
+        }
+    }
+
+    function cancelBooking(bookingId) {
+        bookings = bookings.filter(b => b.id !== bookingId);
+        saveBookings();
+        renderBookingsAsTable();
+        showToast("❌ Booking cancelled successfully.", true);
+    }
+
+    // Render as HTML Table with headers
+    function renderBookingsAsTable() {
+        const container = document.getElementById('bookingsContainer');
+        if (!container) return;
+
+        if (bookings.length === 0) {
+            container.innerHTML = `<div class="empty-message"><i class="fas fa-calendar-times"></i> No bookings yet. Book your maid now and enjoy a sparkling clean home!</div>`;
+            return;
+        }
+
+        let tableHtml = `
+            <table class="bookings-table">
+                <thead>
+                    <tr>
+                        <th>Booking ID</th>
+                        <th>Customer Name</th>
+                        <th>Date</th>
+                        <th>Time Slot</th>
+                        <th>Service</th>
+                        <th>Amount</th>
+                        <th>Address</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+        `;
+
+        bookings.forEach(booking => {
+            // Shorten address for table display
+            const shortAddress = booking.address.length > 30 ? booking.address.substring(0, 27) + '...' : booking.address;
+            tableHtml += `
+                <tr data-id="${booking.id}">
+                    <td><span class="booking-badge">${booking.id}</span></td>
+                    <td><strong>${escapeHtml(booking.name)}</strong><br><span style="font-size:0.75rem; color:#b87a4b;">${escapeHtml(booking.email)}</span><br> <span style="font-size:0.75rem; color:#b87a4b;"> <a href="tel:${escapeHtml(booking.phone)}" style="color:#b87a4b; text-decoration:underline;"> <i class="fas fa-phone"></i> ${escapeHtml(booking.phone)} </a> </span></td>
+                    <td>${booking.date}</td>
+                    <td>${booking.timeSlot}</td>
+                    <td>${booking.serviceLabel}</td>
+                    <td>₹${booking.servicePrice}</td>
+                    <td title="${escapeHtml(booking.address)}">${escapeHtml(shortAddress)}</td>
+                    <td><button class="cancel-table-btn" data-id="${booking.id}"><i class="fas fa-ban"></i> Cancel</button></td>
+                </tr>
+            `;
+        });
+
+        tableHtml += `</tbody></table>`;
+        container.innerHTML = tableHtml;
+
+        // Attach cancel event listeners to all cancel buttons in table
+        document.querySelectorAll('.cancel-table-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const id = btn.getAttribute('data-id');
+                if (id) cancelBooking(id);
+            });
+        });
+    }
+
+    function escapeHtml(str) { 
+        if(!str) return ''; 
+        return str.replace(/[&<>]/g, function(m){ 
+            if(m==='&') return '&amp;'; 
+            if(m==='<') return '&lt;'; 
+            if(m==='>') return '&gt;'; 
+            return m;
+        }); 
+    }
+
+    let toastTimer;
+    function showToast(message, isError = false) {
+        const existing = document.querySelector('.toast-message');
+        if (existing) existing.remove();
+        const toast = document.createElement('div');
+        toast.className = 'toast-message';
+        toast.style.animation = 'slideIn 0.3s ease';
+        toast.innerHTML = `<i class="fas ${isError ? 'fa-exclamation-triangle' : 'fa-check-circle'}"></i> ${message}`;
+        document.body.appendChild(toast);
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => { toast.remove(); }, 3500);
+    }
+
+    function handleBooking() { 
+        if (!validateForm()) return; 
+        addBooking(createBookingObject()); 
+    }
+    
+    function setMinDate() { 
+        const dateInput = document.getElementById('bookingDate'); 
+        if(dateInput){ 
+            dateInput.min = new Date().toISOString().split('T')[0]; 
+        } 
+    }
+    
+    function scrollToBookings() { 
+        document.getElementById('bookingsSection').scrollIntoView({ behavior: 'smooth' }); 
+    }
+    function scrollToServices() { 
+        document.getElementById('servicesSection').scrollIntoView({ behavior: 'smooth' }); 
+    }
+    function scrollToHome() { 
+        document.getElementById('homeSection').scrollIntoView({ behavior: 'smooth' }); 
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        initServiceChips(); 
+        loadBookings(); 
+        setMinDate(); 
+        updatePriceDisplay();
+        
+        document.getElementById('bookNowBtn').addEventListener('click', handleBooking);
+        document.getElementById('scrollToBookingsLink').addEventListener('click', (e) => { e.preventDefault(); scrollToBookings(); });
+        document.getElementById('navServices').addEventListener('click', (e) => { e.preventDefault(); scrollToServices(); });
+        document.getElementById('navHome').addEventListener('click', (e) => { e.preventDefault(); scrollToHome(); });
+        
+        // Service card buttons integration
+        document.querySelectorAll('.book-service-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const service = btn.getAttribute('data-service-type');
+                const price = parseInt(btn.getAttribute('data-price'));
+                const targetChip = document.querySelector(`.service-chip[data-service="${service}"]`);
+                if(targetChip) {
+                    document.querySelectorAll('.service-chip').forEach(c => c.classList.remove('selected'));
+                    targetChip.classList.add('selected');
+                    currentService = { type: service, price: price };
+                    updatePriceDisplay();
+                    document.getElementById('homeSection').scrollIntoView({ behavior: 'smooth' });
+                    showToast(`✨ ${targetChip.innerText.split('·')[0]} selected! Complete the booking.`, false);
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
